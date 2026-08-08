@@ -105,6 +105,28 @@ app.get("/api/kb", (req, res) => {
   res.json(results);
 });
 
+// Serve PDF Presentation
+app.get("/Digital_Entrepreneur_Navigator_Presentation.pdf", (_req, res) => {
+  const pdfPath = path.join(process.cwd(), "Digital_Entrepreneur_Navigator_Presentation.pdf");
+  res.sendFile(pdfPath);
+});
+
+app.get("/api/download-presentation", (_req, res) => {
+  const pdfPath = path.join(process.cwd(), "Digital_Entrepreneur_Navigator_Presentation.pdf");
+  res.download(pdfPath, "Digital_Entrepreneur_Navigator_Presentation.pdf");
+});
+
+// Serve PPTX Presentation
+app.get("/Digital_Entrepreneur_Navigator_Presentation.pptx", (_req, res) => {
+  const pptxPath = path.join(process.cwd(), "Digital_Entrepreneur_Navigator_Presentation.pptx");
+  res.sendFile(pptxPath);
+});
+
+app.get("/api/download-presentation-pptx", (_req, res) => {
+  const pptxPath = path.join(process.cwd(), "Digital_Entrepreneur_Navigator_Presentation.pptx");
+  res.download(pptxPath, "Digital_Entrepreneur_Navigator_Presentation.pptx");
+});
+
 // GET Support Programs
 app.get("/api/support-programs", (_req, res) => {
   res.json(SUPPORT_PROGRAMS);

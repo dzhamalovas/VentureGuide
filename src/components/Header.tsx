@@ -44,8 +44,8 @@ export const Header: React.FC<HeaderProps> = ({ currentRole, onRoleChange, onNav
           <span className="text-slate-500 text-[11px]">База знаний ФНС + ФСИ</span>
         </div>
 
-        {/* Right Controls: Role Switcher & Navigation CTA */}
-        <div className="flex items-center gap-3">
+        {/* Right Controls: Role Switcher */}
+        <div className="flex items-center gap-2">
           {/* Quick Chat CTA */}
           {activePage !== 'chat' && (
             <button

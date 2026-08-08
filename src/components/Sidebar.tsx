@@ -7,10 +7,7 @@ import {
   Gift, 
   MessageSquare, 
   ShieldAlert, 
-  Sparkles,
-  ArrowUpRight,
-  TrendingUp,
-  FileText
+  Sparkles
 } from 'lucide-react';
 
 interface SidebarProps {
