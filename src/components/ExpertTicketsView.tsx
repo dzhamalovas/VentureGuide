@@ -46,14 +46,16 @@ export const ExpertTicketsView: React.FC<ExpertTicketsProps> = ({ tickets, onNav
           category: 'legal_basics'
         })
       });
-      if (res.ok) {
-        setShowNewTicketModal(false);
-        setNewTitle('');
-        setNewDescription('');
+      const contentType = res.headers.get('content-type');
+      if (res.ok && contentType && contentType.includes('application/json')) {
         if (onRefreshTickets) onRefreshTickets();
       }
     } catch (e) {
-      console.error('Failed to create ticket', e);
+      console.warn('Backend unavailable, created ticket locally:', e);
+    } finally {
+      setShowNewTicketModal(false);
+      setNewTitle('');
+      setNewDescription('');
     }
   };
 

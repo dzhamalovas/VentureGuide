@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Цифровой навигатор предпринимателя</title>
+    <script>
+      // Ensure trailing slash on GitHub Pages root path to prevent relative asset 404s
+      (function() {
+        var path = window.location.pathname;
+        if (path.length > 1 && !path.endsWith('/') && !path.includes('.')) {
+          window.history.replaceState(null, '', path + '/' + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

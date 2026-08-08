@@ -16,16 +16,19 @@ export default function App() {
   const [currentRole, setCurrentRole] = useState<'founder' | 'expert'>('founder');
   const [tickets, setTickets] = useState<ExpertTicket[]>(INITIAL_TICKETS);
 
-  // Fetch Tickets from API
+  // Fetch Tickets from API safely
   const refreshTickets = async () => {
     try {
       const res = await fetch('/api/tickets');
-      if (res.ok) {
+      const contentType = res.headers.get('content-type');
+      if (res.ok && contentType && contentType.includes('application/json')) {
         const data = await res.json();
-        setTickets(data);
+        if (Array.isArray(data)) {
+          setTickets(data);
+        }
       }
     } catch (e) {
-      console.error('Failed to fetch tickets:', e);
+      console.warn('Failed to fetch tickets from server (using local state):', e);
     }
   };
 
